@@ -794,7 +794,9 @@ class DockerClient(object):
 
             # If we have more than one repo tag, return as many dicts
             for rt in a['RepoTags']:
-                repo, tag = rt.split(':', 2)
+                splitIndex = rt.rfind(':')
+                repo = rt[:splitIndex]
+                tag = rt[splitIndex:]
                 c = {}
                 c.update(b)
                 c['Repository'] = repo
