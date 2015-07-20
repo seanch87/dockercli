@@ -33,6 +33,7 @@ COMMAND_NAMES = [
     'top',
     'unpause',
     'version',
+    'exit',
 ]
 
 

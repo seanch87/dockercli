@@ -82,6 +82,7 @@ class DockerClient(object):
             'unpause': (self.unpause, ("Unpause all processes within a "
                                        "container.")),
             'version': (self.version, "Show the Docker version information."),
+            'exit':  (self.exit, "Exit"),
         }
 
         self.output = None
@@ -179,6 +180,10 @@ class DockerClient(object):
                 self.output = handler()
         elif cmd:
             self.output = self.help()
+
+    def exit(self, *_, **kwargs):
+        # Unused parameters for linter.
+        raise EOFError
 
     def attach(self, *args, **kwargs):
         """
